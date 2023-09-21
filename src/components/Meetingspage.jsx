@@ -17,7 +17,12 @@ const Meetingspage = () => {
    };
 
    useEffect(() => {
+    if (location.state) {
        joinMeeting(location.state);
+    } else {
+        console.error("No config object passed. Going back to /startpage")
+        navigate("/startpage");
+    }
      }, []);
    
      return (

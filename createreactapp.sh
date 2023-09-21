@@ -41,7 +41,6 @@ echo "@tailwind base;
 @tailwind utilities;" > input.css &&
 
 echo "
-
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -76,7 +75,7 @@ module.exports={
         },
     },
     resolve: {
-        extensions: ['.js','.jsx','.json'] 
+        extensions: ['.js','.jsx','.json','.css','scss'] 
     },
     module: {
         rules: [
@@ -86,9 +85,9 @@ module.exports={
               use:  'babel-loader' 
             },
             {
-              test: /\.css$/i,
+              test: /\.(css|scss)$/i,
               exclude: /node_modules/,
-              use: ['style-loader', 'css-loader']
+              use: ["css-loader","style-loader", ]
             },
             {
               test: /\.(jpg|png|svg)$/,
@@ -121,7 +120,9 @@ echo "{
 }" > .babelrc &&
 echo "" > .env &&
 echo ".env
-/node_modules" > .gitignore &&
+/node_modules
+.DS_Store
+package-lock.json" > .gitignore &&
 echo "/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js}'],
@@ -131,7 +132,7 @@ module.exports = {
   plugins: [],
 }" > tailwind.config.js &&
 old_string='\"test\": "echo \\\"Error: no test specified\\\" && exit 1\"' &&
-new_string="\"start\": \"webpack-dev-server .\",\n    \"build\": \"Webpack .\"" &&
+new_string="\"start\": \"webpack-dev-server . && npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch\",\n    \"build\": \"Webpack .\"" &&
 sed -i '' "s/$old_string/$new_string/" package.json &&
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch &&
 git init &&
