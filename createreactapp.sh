@@ -119,7 +119,8 @@ echo "{
         \"@babel/plugin-transform-runtime\"
     ]
 }" > .babelrc &&
-echo "" > .env &&
+echo " " > .env &&
+echo " " > styles.css &&
 echo ".env
 /node_modules
 .DS_Store
@@ -136,4 +137,4 @@ old_string='\"test\": "echo \\\"Error: no test specified\\\" && exit 1\"' &&
 new_string="\"start\": \"webpack-dev-server . && npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch\",\n    \"build\": \"Webpack .\"" &&
 sed -i '' "s/$old_string/$new_string/" package.json &&
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch &&
-git init &&
+git init
