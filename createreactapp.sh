@@ -1,5 +1,5 @@
 npm init &&
-npm i --save-dev webpack webpack-cli webpack-dev-server path ajv html-webpack-plugin tailwindcss @mui/base styled-components concurrently babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier react react-dom react-router-dom style-loader css-loader url-loader --legacy-peer-dep &&
+npm i --save-dev webpack webpack-cli webpack-dev-server path ajv html-webpack-plugin tailwindcss @mui/base styled-components concurrently babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier react react-dom react-router-dom style-loader css-loader url-loader sass-loader sass postcss-loader postcss postcss-preset-env --legacy-peer-dep &&
 mkdir src &&
 cd src &&
 mkdir components &&
@@ -86,9 +86,29 @@ module.exports={
               use:  'babel-loader' 
             },
             {
-              test: /\.(css|scss)$/i,
-              exclude: /node_modules/,
-              use: ["css-loader","style-loader", ]
+              test: /\.css$/i,
+              use: [
+                'style-loader',
+                'css-loader',
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    postcssOptions: {
+                      plugins: [
+                        [ 'postcss-preset-env', {}, ],
+                      ],
+                    },
+                  },
+                },
+              ]
+            },
+            {
+              test: /\.s[ac]ss$/i,
+              use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader',
+              ],
             },
             {
               test: /\.(jpg|png|svg)$/,

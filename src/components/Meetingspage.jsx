@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as UIToolkit from '@zoom/videosdk-ui-toolkit'
-import styles from  "../../styles.css"; //not used just a demo
-// import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
+// import styles from  "../../styles.css"; //not used just a demo
+import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
 
 const Meetingspage = () => {
    const navigate = useNavigate();
