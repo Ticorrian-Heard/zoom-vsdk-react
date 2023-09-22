@@ -81,8 +81,7 @@ module.exports={
     module: {
         rules: [
             {
-              test: /\.(js|jsx)$/,   
-              exclude: /node_modules/, 
+              test: /\.(js|jsx)$/,    
               use:  'babel-loader' 
             },
             {
@@ -112,7 +111,6 @@ module.exports={
             },
             {
               test: /\.(jpg|png|svg)$/,
-              exclude: /node_modules/,
               use: [
                 {
                   loader: 'url-loader',
