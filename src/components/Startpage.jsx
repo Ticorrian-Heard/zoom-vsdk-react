@@ -32,6 +32,10 @@ const StartPage = () => {
         webEndpoint: "",
         dependentAssets: "",
         advancedTelemetry: true,
+        videoSDKJWT: "",
+        userName: "",
+        sessionName: "",
+        sessionPasscode: "",
         features:  [ "video", "audio", "share", "chat", "settings", "users", "roles" ],
     };
 
