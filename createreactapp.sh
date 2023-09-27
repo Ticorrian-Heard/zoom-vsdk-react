@@ -1,5 +1,5 @@
 npm init &&
-npm i --save-dev webpack webpack-cli webpack-dev-server path ajv html-webpack-plugin tailwindcss @mui/base styled-components concurrently babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier react react-dom react-router-dom style-loader css-loader url-loader sass-loader sass postcss-loader postcss postcss-preset-env --legacy-peer-dep &&
+npm i --save-dev webpack webpack-cli webpack-dev-server path ajv html-webpack-plugin tailwindcss @mui/base styled-components concurrently babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier react react-dom react-router-dom style-loader css-loader url-loader sass-loader sass postcss-loader postcss postcss-preset-env react-scripts@latest concurrently --legacy-peer-dep &&
 mkdir src &&
 cd src &&
 mkdir components &&
@@ -20,7 +20,8 @@ echo "<!DOCTYPE html>
         <meta charset=\"UTF-8\">
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>ReactApp</title>
-        <link href=\"../dist/output.css\" rel=\"stylesheet\">
+        <link rel=\"stylesheet\" href=\"../dist/output.css\">
+        <link rel=\"stylesheet\" href=\"../styles.css\">
       </head>
     <body>
         <h1 class=\"text-3xl font-bold underline\">
@@ -145,14 +146,17 @@ echo ".env
 package-lock.json" > .gitignore &&
 echo "/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js}'],
+  content: [
+    \"./index.html\",
+    \"./src/**/*.{js,ts,jsx,tsx}\"
+  ],
   theme: {
     extend: {},
   },
   plugins: [],
 }" > tailwind.config.js &&
 old_string='\"test\": "echo \\\"Error: no test specified\\\" && exit 1\"' &&
-new_string="\"start\": \"webpack-dev-server . && npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch\",\n    \"build\": \"Webpack .\"" &&
+new_string="\"app\": \"webpack-dev-server .\", \n \"watch-css\": \"npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch\", \n \"build\": \"Webpack .\", \n \"start\": \"concurrently -p \\\"[{name}]\\\" -n \\\"app,watch-css\\\" -c \\\"cyan,green\\\" \\\"npm run app\\\"  \\\"npm run watch-css\\\" \"" &&
 sed -i '' "s/$old_string/$new_string/" package.json &&
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch &&
 git init

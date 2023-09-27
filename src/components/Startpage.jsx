@@ -23,6 +23,9 @@ const StartPage = () => {
   };
 
   const joinSession = async () => {
+
+    if (name === "" || topic === "") return;
+
     let UIToolKitConfig = {
         userIdentity: "",
         sessionKey: "",
@@ -66,12 +69,12 @@ const StartPage = () => {
 
   return (
     <React.Fragment>
-      <div>
-      <h1>UIToolKit React</h1>
-      <input type="text" placeholder="User Name" id="userName" onChange={change}/>
-      <input type="text" placeholder="Session Topic" id="sessionTopic" onChange={change}/>
-      <input type="text" placeholder="Session Passcode" id="sessionPasscode" onChange={change}/>
-      <button type="button" onClick={joinSession}>Join Session</button>
+      <div className="flex flex-col items-center w-96 mt-96 m-auto">
+      <h1 className="text-3xl">UIToolKit React</h1>
+      <input className="h-12 border-2 border-solid rounded-lg mt-2 border-sky-600 hover:border-sky-700 w-1/2" type="text" placeholder=" User Name" id="userName" onChange={change}/>
+      <input className="h-12 border-2 border-solid rounded-lg mt-2 border-sky-600 hover:border-sky-700 w-1/2" type="text" placeholder=" Session Topic" id="sessionTopic" onChange={change}/>
+      <input className="h-12 border-2 border-solid rounded-lg mt-2 border-sky-600 hover:border-sky-700 w-1/2" type="text" placeholder=" Session Passcode" id="sessionPasscode" onChange={change}/>
+      <button className="h-12 border-solid rounded-lg mt-2 bg-sky-600 w-1/2 text-white hover:bg-sky-700 active:bg-sky-800" type="button" onClick={joinSession}>Join Session</button>
       </div>
     </React.Fragment>
   );

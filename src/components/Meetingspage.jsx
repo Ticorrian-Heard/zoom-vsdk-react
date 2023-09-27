@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import * as UIToolkit from '@zoom/videosdk-ui-toolkit'
-// import styles from  "../../styles.css"; //not used just a demo
+// import styles from  "../../styles.css"; //not used, ust a demo
 import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
 
 const Meetingspage = () => {
@@ -27,7 +27,7 @@ const Meetingspage = () => {
    
      return (
        <React.Fragment>
-          <div>
+          <div className="w-3/4 m-auto">
              <div id='UIToolkit'></div>
           </div>
        </React.Fragment>

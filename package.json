@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server . && npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "Webpack ."
+    "app": "webpack-dev-server .",
+    "watch-css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "Webpack .",
+    "start": "concurrently -p \"[{name}]\" -n \"app,watch-css\" -c \"cyan,green\" \"npm run app\"  \"npm run watch-css\" "
   },
   "author": "",
   "license": "ISC",
@@ -43,6 +45,7 @@
   "dependencies": {
     "postcss-loader": "^7.3.3",
     "react-router-dom": "^6.16.0",
+    "react-scripts": "^5.0.1",
     "sass-loader": "^13.3.2"
   }
 }
