@@ -1,5 +1,5 @@
 npm init &&
-npm i --save-dev webpack webpack-cli webpack-dev-server path ajv html-webpack-plugin tailwindcss @mui/base styled-components concurrently babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier react react-dom react-router-dom style-loader css-loader url-loader sass-loader sass postcss-loader postcss postcss-preset-env react-scripts@latest concurrently --legacy-peer-dep &&
+npm i --save-dev webpack webpack-cli webpack-dev-server path ajv html-webpack-plugin tailwindcss @mui/base styled-components concurrently babel-loader @babel/preset-env @babel/core @babel/plugin-transform-runtime @babel/preset-react @babel/eslint-parser @babel/cli eslint eslint-config-airbnb-base eslint-plugin-jest eslint-config-prettier react react-dom react-router-dom style-loader css-loader url-loader sass-loader sass postcss-loader postcss postcss-preset-env react-scripts@latest concurrently react-loader-spinner --legacy-peer-dep &&
 mkdir src &&
 cd src &&
 mkdir components &&
