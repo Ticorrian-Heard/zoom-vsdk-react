@@ -3,7 +3,7 @@ import * as ui from './dist/videosdk-ui-toolkit.js'
 let uitoolKit = document.createElement('app-uitoolkit')
 let previewKit = document.createElement('app-previewkit')
 
-export default {
+let UIToolKit = {
     openPreview: (/** @type {HTMLElement} */ container) => {
         container.append(previewKit)
     },
@@ -29,4 +29,6 @@ export default {
     offSessionClosed: (/** @type {EventListenerOrEventListenerObject} */ callback) => {
         uitoolKit.removeEventListener('sessionClosed', callback)
     }
-}
+};
+
+export default UIToolKit;
