@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import UIToolKit from "../../videosdk-ui-toolkit/index.js";
-import '../../videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
+import UIToolKit from "@zoom/videosdk-ui-toolkit";
+import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css'
 import { BallTriangle } from "react-loader-spinner";
 
 const Meetingspage = () => {
@@ -10,6 +10,7 @@ const Meetingspage = () => {
    const [loader, setLoader] = useState(true);
    
    const joinMeeting = async (UIToolKitConfig) => {
+      console.log( { UIToolKitConfig } )
       let sessionContainer = document.getElementById('UIToolkit');
       UIToolKit.joinSession(sessionContainer, UIToolKitConfig)
       UIToolKit.onSessionJoined( () => { setLoader(loader => !loader) } )
