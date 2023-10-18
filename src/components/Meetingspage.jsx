@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import * as UIToolkit from '@zoom/videosdk-ui-toolkit'
-// import styles from  "../../styles.css"; //not used, ust a demo
-import '@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
+import uitoolkit from "../../videosdk-ui-toolkit/index.js";
+import '../../videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css';
 import { BallTriangle } from "react-loader-spinner";
 
 const Meetingspage = () => {
@@ -11,12 +10,10 @@ const Meetingspage = () => {
    const [loader, setLoader] = useState(true);
    
    const joinMeeting = async (UIToolKitConfig) => {
-      let UIKit = document.createElement('app-uitoolkit');
-      document.getElementById('UIToolkit')?.append(UIKit);
-      window.ZoomUIToolKit.init(UIToolKitConfig);
-      window.ZoomUIToolKit.subscribe("uitoolkit-destroy", () => { navigate("/startpage"); } );
-      window.ZoomUIToolKit.subscribe("loader-switch", () => { setLoader(loader => !loader) } );
-      window.ZoomUIToolKit.join();
+      let sessionContainer = document.getElementById('UIToolkit');
+      uitoolkit.joinSession(sessionContainer, UIToolKitConfig)
+      uitoolkit.onSessionJoined( () => { setLoader(loader => !loader) } )
+      uitoolkit.onSessionClosed( () => { navigate("/startpage"); })
    };
 
    useEffect(() => {
