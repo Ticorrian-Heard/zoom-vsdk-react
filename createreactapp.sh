@@ -30,6 +30,11 @@ echo "<!DOCTYPE html>
         <div id=\"root\"></div>
     </body>
 </html>" > index.html &&
+
+echo "@tailwind base;
+@tailwind components;
+@tailwind utilities;" > input.css &&
+
 cd .. &&
 echo "
 import React from 'react';
@@ -37,10 +42,6 @@ import reactDom from 'react-dom';
 import App from './src/App'
 
 reactDom.render(<App />, document.getElementById('root'));" > index.js &&
-
-echo "@tailwind base;
-@tailwind components;
-@tailwind utilities;" > input.css &&
 
 echo "
 const webpack = require('webpack');
