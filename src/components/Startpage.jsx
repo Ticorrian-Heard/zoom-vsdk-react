@@ -11,6 +11,10 @@ const StartPage = () => {
   const [loader, setLoader] = useState(false);
   const [disable, setDisable] = useState(false);
 
+  useEffect(() => {
+    console.log("SharedArrayBuffer:", crossOriginIsolated);
+  },[]);
+
   const change = (e) => {
     switch(e.target.id) {
         case "userName":

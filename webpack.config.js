@@ -18,7 +18,7 @@ module.exports={
         static: {
           directory: path.join(__dirname, '/'), 
         },
-        port: 3000,
+        port: 3004,
         watchFiles: ['src/*.html'],
         historyApiFallback: true,  
         host: 'localhost',
@@ -28,8 +28,8 @@ module.exports={
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
           'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-          'Cross-Origin-Embedder-Policy': 'require-corp',
-          'Cross-Origin-Opener-Policy': 'same-origin',
+          // 'Cross-Origin-Embedder-Policy': 'require-corp',
+          // 'Cross-Origin-Opener-Policy': 'same-origin',
           'Cache-Control': 'no-store',
         },
     },
@@ -82,6 +82,6 @@ module.exports={
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new HtmlWebpackPlugin({ template: 'src/index.html'})
+      new HtmlWebpackPlugin({ template: './index.html'})
     ] 
 }

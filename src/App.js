@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import StartPage from "./components/Startpage";
 import MeetingsPage from "./components/Meetingspage";
 import {
